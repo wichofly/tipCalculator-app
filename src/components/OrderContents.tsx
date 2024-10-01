@@ -1,3 +1,4 @@
+import { formatCurrency } from '../helpers';
 import { OrderItem } from '../types';
 
 interface Props {
@@ -15,10 +16,15 @@ export const OrderContents = ({ order }: Props) => {
         ) : (
           order.map((item) => (
             <div key={item.id}>
-              <p>
-                {item.name} x {item.quantity}
+              <p className="text-lg">
+                {item.name} - {formatCurrency(item.price)}
               </p>
-              <p>${item.price}</p>
+              <p className="font-bold">
+                Quantity: {item.quantity} -{' '}
+                {formatCurrency(item.price * item.quantity)}
+              </p>
+
+              <button>X</button>
             </div>
           ))
         )}
