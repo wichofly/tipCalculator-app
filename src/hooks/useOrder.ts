@@ -19,7 +19,5 @@ export const useOrder = () => {
     }
   };
 
-  console.log(order);
-
-  return { addItem };
+  return { order, addItem };
 };
