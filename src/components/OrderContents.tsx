@@ -1,11 +1,12 @@
 import { formatCurrency } from '../helpers';
-import { OrderItem } from '../types';
+import { MenuItem, OrderItem } from '../types';
 
 interface Props {
   order: OrderItem[];
+  removeItem: (id: MenuItem['id']) => void;
 }
 
-export const OrderContents = ({ order }: Props) => {
+export const OrderContents = ({ order, removeItem }: Props) => {
   return (
     <div>
       <h2 className="font-bold text-4xl">Consume</h2>
@@ -29,7 +30,10 @@ export const OrderContents = ({ order }: Props) => {
                 </p>
               </div>
 
-              <button className="bg-red-400 h-8 w-8 rounded-full font-bold text-white">
+              <button
+                className="bg-red-400 h-8 w-8 rounded-full font-bold text-white"
+                onClick={() => removeItem(item.id)}
+              >
                 X
               </button>
             </div>
