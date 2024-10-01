@@ -2,12 +2,16 @@ import { MenuItem } from '../types';
 
 interface Props {
   item: MenuItem;
+  addItem: () => void;
 }
 
-export const MenuItems = ({ item }: Props) => {
+export const MenuItems = ({ item, addItem }: Props) => {
   return (
     <>
-      <button className="border-2 border-gray-300 hover:bg-gray-200 w-full p-3 flex justify-between">
+      <button
+        className="border-2 border-gray-300 hover:bg-gray-200 w-full p-3 flex justify-between"
+        onClick={() => addItem()}
+      >
         <p>{item.name}</p>
         <p className="font-bold">${item.price}</p>
       </button>
