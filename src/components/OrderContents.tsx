@@ -13,7 +13,7 @@ export const OrderContents = ({ order, removeItem }: Props) => {
 
       <div className="space-y-3 mt-5">
         {order.length === 0 ? (
-          <p className="text-center">Empty order</p>
+          <p className="text-center font-bold text-xl">Empty order</p>
         ) : (
           order.map((item) => (
             <div
