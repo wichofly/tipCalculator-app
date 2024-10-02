@@ -31,7 +31,7 @@ function App() {
         <div className="border border-dashed border-slate-300 p-5 space-y-10">
           <OrderContents order={order} removeItem={removeItem} />
           <TipPercentage order={order} setTipPercentage={setTipPercentage} />
-          <OrderTotals order={order} />
+          <OrderTotals order={order} tipPercentage={tipPercentage} />
         </div>
       </main>
     </>

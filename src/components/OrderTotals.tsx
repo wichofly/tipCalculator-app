@@ -3,9 +3,10 @@ import { OrderItem } from '../types';
 
 interface Props {
   order: OrderItem[];
+  tipPercentage: number
 }
 
-export const OrderTotals = ({ order }: Props) => {
+export const OrderTotals = ({ order, tipPercentage }: Props) => {
   if (order.length === 0) {
     return null; // Return nothing if the order is empty
   }
@@ -15,7 +16,7 @@ export const OrderTotals = ({ order }: Props) => {
     0
   );
 
-  const tip = subtotal *0.10; // 10% tip
+  const tip = subtotal * tipPercentage
 
   const total = subtotal + tip;
 
