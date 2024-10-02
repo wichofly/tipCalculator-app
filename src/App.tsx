@@ -7,8 +7,14 @@ import { menuItems } from './data/db';
 import { useOrder } from './hooks/useOrder';
 
 function App() {
-  const { order, tipPercentage, setTipPercentage, addItem, removeItem } =
-    useOrder();
+  const {
+    order,
+    tipPercentage,
+    setTipPercentage,
+    addItem,
+    removeItem,
+    placeOrder,
+  } = useOrder();
 
   return (
     <>
@@ -29,12 +35,16 @@ function App() {
           </div>
         </div>
 
-        <div className="border border-dashed border-slate-300 p-5 space-y-10">
+        <div className="border border-dashed rounded-md border-slate-300 p-5 space-y-10">
           <OrderContents order={order} removeItem={removeItem} />
 
           <ShowIfOrderExists order={order}>
             <TipPercentage setTipPercentage={setTipPercentage} />
-            <OrderTotals order={order} tipPercentage={tipPercentage} />
+            <OrderTotals
+              order={order}
+              tipPercentage={tipPercentage}
+              placeOrder={placeOrder}
+            />
           </ShowIfOrderExists>
         </div>
       </main>

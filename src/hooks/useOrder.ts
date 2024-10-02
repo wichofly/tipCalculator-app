@@ -5,7 +5,6 @@ export const useOrder = () => {
   const [order, setOrder] = useState<OrderItem[]>([]);
   const [tipPercentage, setTipPercentage] = useState<number>(0);
 
-
   const addItem = (item: MenuItem) => {
     const itemExist = order.find((orderItem) => orderItem.id === item.id);
     if (itemExist) {
@@ -25,5 +24,17 @@ export const useOrder = () => {
     setOrder(order.filter((orderItem) => orderItem.id !== id));
   };
 
-  return { order, tipPercentage, setTipPercentage, addItem, removeItem };
+  const placeOrder = () => {
+    setOrder([]);
+    setTipPercentage(0);
+  };
+
+  return {
+    order,
+    tipPercentage,
+    setTipPercentage,
+    addItem,
+    removeItem,
+    placeOrder,
+  };
 };

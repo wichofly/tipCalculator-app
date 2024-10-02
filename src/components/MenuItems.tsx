@@ -9,7 +9,7 @@ export const MenuItems = ({ item, addItem }: Props) => {
   return (
     <>
       <button
-        className="border-2 border-gray-300 hover:bg-gray-200 w-full p-3 flex justify-between"
+        className="border-2 border-gray-300 hover:bg-gray-200 w-full p-3 flex justify-between rounded-md"
         onClick={() => addItem(item)}
       >
         <p>{item.name}</p>
