@@ -3,27 +3,23 @@ import { OrderItem } from '../types';
 
 interface Props {
   order: OrderItem[];
-  tipPercentage: number
+  tipPercentage: number;
 }
 
 export const OrderTotals = ({ order, tipPercentage }: Props) => {
-  if (order.length === 0) {
-    return null; // Return nothing if the order is empty
-  }
-
   const subtotal = order.reduce(
     (acc, item) => acc + item.price * item.quantity,
     0
   );
 
-  const tip = subtotal * tipPercentage
+  const tip = subtotal * tipPercentage;
 
   const total = subtotal + tip;
 
   return (
     <div className="space-y-3">
       <h2 className="font-black text-2xl border-b-2 border-gray-200 pb-1">
-        Total & tip
+        Total & Tip
       </h2>
       <p>
         Subtotal to be paid:{' '}
@@ -35,7 +31,8 @@ export const OrderTotals = ({ order, tipPercentage }: Props) => {
       </p>
 
       <p>
-        Total to be paid: <span className="font-bold">{formatCurrency(total)}</span>
+        Total to be paid:{' '}
+        <span className="font-bold">{formatCurrency(total)}</span>
       </p>
     </div>
   );

@@ -1,6 +1,7 @@
 import { MenuItems } from './components/MenuItems';
 import { OrderContents } from './components/OrderContents';
 import { OrderTotals } from './components/OrderTotals';
+import { ShowIfOrderExists } from './components/ShowIfOrderExists';
 import { TipPercentage } from './components/TipPercentage';
 import { menuItems } from './data/db';
 import { useOrder } from './hooks/useOrder';
@@ -30,8 +31,11 @@ function App() {
 
         <div className="border border-dashed border-slate-300 p-5 space-y-10">
           <OrderContents order={order} removeItem={removeItem} />
-          <TipPercentage order={order} setTipPercentage={setTipPercentage} />
-          <OrderTotals order={order} tipPercentage={tipPercentage} />
+
+          <ShowIfOrderExists order={order}>
+            <TipPercentage setTipPercentage={setTipPercentage} />
+            <OrderTotals order={order} tipPercentage={tipPercentage} />
+          </ShowIfOrderExists>
         </div>
       </main>
     </>

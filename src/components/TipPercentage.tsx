@@ -1,6 +1,3 @@
-// import { ChangeEvent } from 'react';
-import { OrderItem } from '../types';
-
 const tipOptions = [
   {
     id: 'tip-10',
@@ -20,23 +17,15 @@ const tipOptions = [
 ];
 
 interface Props {
-  order: OrderItem[];
   setTipPercentage: (tip: number) => void;
 }
 
-export const TipPercentage = ({ order, setTipPercentage }: Props) => {
-  if (order.length === 0) {
-    return null;
-  }
-
-  // const handleTipChange = (e: ChangeEvent<HTMLInputElement>) => {
-  //   // setTipPercentage(Number(e.target.value));
-  //   setTipPercentage(+e.target.value);
-  // };
-
+export const TipPercentage = ({ setTipPercentage }: Props) => {
   return (
     <div>
-      <h3 className="font-bold text-2xl">Tip:</h3>
+      <h3 className="font-bold text-2xl border-b-2 border-gray-200 pb-1">
+        Tip
+      </h3>
 
       <form>
         {tipOptions.map((tip) => (
@@ -48,7 +37,7 @@ export const TipPercentage = ({ order, setTipPercentage }: Props) => {
               name="tip"
               value={tip.value}
               onChange={(e) => setTipPercentage(+e.target.value)}
-              // onChange={handleTipChange}
+              className="cursor-pointer accent-stone-600"
             />
           </div>
         ))}
