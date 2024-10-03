@@ -61,7 +61,7 @@ npm run dev
 
 ## Deploy in Netlify
 
-- [Tip Calculator App](https://github-app-wheat.vercel.app/)
+- [Tip Calculator App](https://tip-comsuption-calculator.netlify.app/)
 
 This project is a practical demonstration of how to build a simple but effective Tip and Consumption Calculator using React, TypeScript, and Tailwind CSS. Feel free to clone, experiment, and suggest improvements!
 
