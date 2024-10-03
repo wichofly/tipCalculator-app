@@ -3,3 +3,7 @@ export interface MenuItem {
   name: string;
   price: number;
 }
+
+export interface OrderItem extends MenuItem {
+  quantity: number;
+}
