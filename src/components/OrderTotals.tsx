@@ -39,7 +39,7 @@ export const OrderTotals = ({ order, tipPercentage, placeOrder }: Props) => {
       </div>
 
       <button
-        className="w-full bg-stone-700 text-white font-bold p-2 uppercase hover:bg-stone-800 rounded-md"
+        className="w-full bg-teal-700 text-white font-bold p-2 uppercase hover:bg-teal-800 rounded-md"
         onClick={placeOrder}
       >
         Save order

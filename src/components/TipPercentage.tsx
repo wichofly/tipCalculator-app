@@ -37,7 +37,7 @@ export const TipPercentage = ({ setTipPercentage }: Props) => {
               name="tip"
               value={tip.value}
               onChange={(e) => setTipPercentage(+e.target.value)}
-              className="cursor-pointer accent-stone-600"
+              className="cursor-pointer accent-teal-600"
             />
           </div>
         ))}
