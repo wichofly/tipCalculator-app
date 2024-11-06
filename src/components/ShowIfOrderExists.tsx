@@ -7,7 +7,7 @@ interface Props {
 
 export const ShowIfOrderExists = ({ order, children }: Props) => {
   if (order.length === 0) {
-    return null;
+    return <p className="text-center font-bold text-xl">Empty order</p>;
   }
   return <>{children}</>;
 };
