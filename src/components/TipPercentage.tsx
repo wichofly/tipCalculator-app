@@ -1,3 +1,6 @@
+import { Dispatch } from 'react';
+import { OrderActions } from '../reducers/orderReducer';
+
 const tipOptions = [
   {
     id: 'tip-10',
@@ -17,10 +20,11 @@ const tipOptions = [
 ];
 
 interface Props {
-  setTipPercentage: (tip: number) => void;
+  tip: number;
+  dispatch: Dispatch<OrderActions>;
 }
 
-export const TipPercentage = ({ setTipPercentage }: Props) => {
+export const TipPercentage = ({ tip, dispatch }: Props) => {
   return (
     <div>
       <h3 className="font-bold text-2xl border-b-2 border-gray-200 pb-1">
@@ -28,15 +32,21 @@ export const TipPercentage = ({ setTipPercentage }: Props) => {
       </h3>
 
       <form>
-        {tipOptions.map((tip) => (
-          <div key={tip.id} className="flex gap-1">
-            <label htmlFor="">{tip.label}</label>
+        {tipOptions.map((tipOption) => (
+          <div key={tipOption.id} className="flex gap-1">
+            <label htmlFor="">{tipOption.label}</label>
             <input
-              id={tip.id}
+              id={tipOption.id}
               type="radio"
               name="tip"
-              value={tip.value}
-              onChange={(e) => setTipPercentage(+e.target.value)}
+              value={tipOption.value}
+              onChange={(e) =>
+                dispatch({
+                  type: 'add-tip',
+                  payload: { value: +e.target.value },
+                })
+              }
+              checked={tipOption.value === tip}
               className="cursor-pointer accent-teal-600"
             />
           </div>

@@ -1,3 +1,4 @@
+import { useReducer } from 'react';
 import Footer from './components/Footer';
 import { MenuItems } from './components/MenuItems';
 import { OrderContents } from './components/OrderContents';
@@ -5,17 +6,10 @@ import { OrderTotals } from './components/OrderTotals';
 import { ShowIfOrderExists } from './components/ShowIfOrderExists';
 import { TipPercentage } from './components/TipPercentage';
 import { menuItems } from './data/db';
-import { useOrder } from './hooks/useOrder';
+import { initialState, orderReducer } from './reducers/orderReducer';
 
 function App() {
-  const {
-    order,
-    tipPercentage,
-    setTipPercentage,
-    addItem,
-    removeItem,
-    placeOrder,
-  } = useOrder();
+  const [state, dispatch] = useReducer(orderReducer, initialState);
 
   return (
     <>
@@ -32,19 +26,19 @@ function App() {
 
             <div className="space-y-3 mt-5">
               {menuItems.map((item) => (
-                <MenuItems key={item.id} item={item} addItem={addItem} />
+                <MenuItems key={item.id} item={item} dispatch={dispatch} />
               ))}
             </div>
           </div>
 
           <div className="border border-dashed rounded-md border-slate-300 p-5 space-y-10">
-            <ShowIfOrderExists order={order}>
-              <OrderContents order={order} removeItem={removeItem} />
-              <TipPercentage setTipPercentage={setTipPercentage} />
+            <ShowIfOrderExists order={state.order}>
+              <OrderContents order={state.order} dispatch={dispatch} />
+              <TipPercentage tip={state.tip} dispatch={dispatch} />
               <OrderTotals
-                order={order}
-                tipPercentage={tipPercentage}
-                placeOrder={placeOrder}
+                order={state.order}
+                tip={state.tip}
+                dispatch={dispatch}
               />
             </ShowIfOrderExists>
           </div>

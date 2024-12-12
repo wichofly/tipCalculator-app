@@ -1,21 +1,23 @@
+import { Dispatch } from 'react';
 import { formatCurrency } from '../helpers';
 import { OrderItem } from '../types';
+import { OrderActions } from '../reducers/orderReducer';
 
 interface Props {
   order: OrderItem[];
-  tipPercentage: number;
-  placeOrder: () => void;
+  tip: number;
+  dispatch: Dispatch<OrderActions>;
 }
 
-export const OrderTotals = ({ order, tipPercentage, placeOrder }: Props) => {
+export const OrderTotals = ({ order, tip, dispatch }: Props) => {
   const subtotal = order.reduce(
     (acc, item) => acc + item.price * item.quantity,
     0
   );
 
-  const tip = subtotal * tipPercentage;
+  const bonus = subtotal * tip;
 
-  const total = subtotal + tip;
+  const total = subtotal + bonus;
 
   return (
     <>
@@ -29,7 +31,7 @@ export const OrderTotals = ({ order, tipPercentage, placeOrder }: Props) => {
         </p>
 
         <p>
-          Tip: <span className="font-bold">{formatCurrency(tip)}</span>
+          Tip: <span className="font-bold">{formatCurrency(bonus)}</span>
         </p>
 
         <p>
@@ -40,7 +42,7 @@ export const OrderTotals = ({ order, tipPercentage, placeOrder }: Props) => {
 
       <button
         className="w-full bg-teal-700 text-white font-bold p-2 uppercase hover:bg-teal-800 rounded-md"
-        onClick={placeOrder}
+        onClick={() => dispatch({ type: 'place-order' })}
       >
         Save order
       </button>
