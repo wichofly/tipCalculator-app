@@ -3,19 +3,19 @@ import { OrderItem } from '../types';
 
 interface Props {
   order: OrderItem[];
-  tipPercentage: number;
+  tip: number;
   placeOrder: () => void;
 }
 
-export const OrderTotals = ({ order, tipPercentage, placeOrder }: Props) => {
+export const OrderTotals = ({ order, tip, placeOrder }: Props) => {
   const subtotal = order.reduce(
     (acc, item) => acc + item.price * item.quantity,
     0
   );
 
-  const tip = subtotal * tipPercentage;
+  const bonus = subtotal * tip;
 
-  const total = subtotal + tip;
+  const total = subtotal + bonus;
 
   return (
     <>
@@ -29,7 +29,7 @@ export const OrderTotals = ({ order, tipPercentage, placeOrder }: Props) => {
         </p>
 
         <p>
-          Tip: <span className="font-bold">{formatCurrency(tip)}</span>
+          Tip: <span className="font-bold">{formatCurrency(bonus)}</span>
         </p>
 
         <p>

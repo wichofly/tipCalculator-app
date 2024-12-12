@@ -60,8 +60,11 @@ export const orderReducer = (
   }
 
   if (action.type === 'add-tip') {
+    const { value } = action.payload as { value: number };
+
     return {
       ...state,
+      tip: value,
     };
   }
 
