@@ -6,11 +6,9 @@ import { OrderTotals } from './components/OrderTotals';
 import { ShowIfOrderExists } from './components/ShowIfOrderExists';
 import { TipPercentage } from './components/TipPercentage';
 import { menuItems } from './data/db';
-import { useOrder } from './hooks/useOrder';
 import { initialState, orderReducer } from './reducers/orderReducer';
 
 function App() {
-  const { placeOrder } = useOrder();
   const [state, dispatch] = useReducer(orderReducer, initialState);
 
   return (
@@ -40,7 +38,7 @@ function App() {
               <OrderTotals
                 order={state.order}
                 tip={state.tip}
-                placeOrder={placeOrder}
+                dispatch={dispatch}
               />
             </ShowIfOrderExists>
           </div>
