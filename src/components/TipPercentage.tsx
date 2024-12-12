@@ -20,7 +20,7 @@ interface Props {
   setTipPercentage: (tip: number) => void;
 }
 
-export const TipPercentage = ({ setTipPercentage }: Props) => {
+export const  TipPercentage = ({ setTipPercentage }: Props) => {
   return (
     <div>
       <h3 className="font-bold text-2xl border-b-2 border-gray-200 pb-1">

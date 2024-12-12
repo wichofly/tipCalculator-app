@@ -1,3 +1,4 @@
+import { useReducer } from 'react';
 import Footer from './components/Footer';
 import { MenuItems } from './components/MenuItems';
 import { OrderContents } from './components/OrderContents';
@@ -6,16 +7,18 @@ import { ShowIfOrderExists } from './components/ShowIfOrderExists';
 import { TipPercentage } from './components/TipPercentage';
 import { menuItems } from './data/db';
 import { useOrder } from './hooks/useOrder';
+import { initialState, orderReducer } from './reducers/orderReducer';
 
 function App() {
   const {
     order,
     tipPercentage,
     setTipPercentage,
-    addItem,
+  
     removeItem,
     placeOrder,
   } = useOrder();
+  const [state, dispatch] = useReducer(orderReducer, initialState);
 
   return (
     <>
@@ -32,7 +35,7 @@ function App() {
 
             <div className="space-y-3 mt-5">
               {menuItems.map((item) => (
-                <MenuItems key={item.id} item={item} addItem={addItem} />
+                <MenuItems key={item.id} item={item} dispatch={dispatch} />
               ))}
             </div>
           </div>
