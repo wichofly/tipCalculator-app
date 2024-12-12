@@ -41,11 +41,11 @@ function App() {
           </div>
 
           <div className="border border-dashed rounded-md border-slate-300 p-5 space-y-10">
-            <ShowIfOrderExists order={order}>
-              <OrderContents order={order} removeItem={removeItem} />
+            <ShowIfOrderExists order={state.order}>
+              <OrderContents order={state.order} removeItem={removeItem} />
               <TipPercentage setTipPercentage={setTipPercentage} />
               <OrderTotals
-                order={order}
+                order={state.order}
                 tipPercentage={tipPercentage}
                 placeOrder={placeOrder}
               />
