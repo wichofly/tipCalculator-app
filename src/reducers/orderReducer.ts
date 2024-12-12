@@ -43,8 +43,13 @@ export const orderReducer = (
   }
 
   if (action.type === 'remove-order') {
+    const { id } = action.payload as { id: MenuItem['id'] };
+
+    const removeOrder = state.order.filter((orderItem) => orderItem.id !== id);
+
     return {
       ...state,
+      order: removeOrder,
     };
   }
 

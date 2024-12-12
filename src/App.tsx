@@ -15,7 +15,7 @@ function App() {
     tipPercentage,
     setTipPercentage,
   
-    removeItem,
+    
     placeOrder,
   } = useOrder();
   const [state, dispatch] = useReducer(orderReducer, initialState);
@@ -42,7 +42,7 @@ function App() {
 
           <div className="border border-dashed rounded-md border-slate-300 p-5 space-y-10">
             <ShowIfOrderExists order={state.order}>
-              <OrderContents order={state.order} removeItem={removeItem} />
+              <OrderContents order={state.order} dispatch={dispatch} />
               <TipPercentage setTipPercentage={setTipPercentage} />
               <OrderTotals
                 order={state.order}
