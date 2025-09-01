@@ -1,8 +1,9 @@
+import { ReactNode } from 'react';
 import { OrderItem } from '../types';
 
 interface Props {
   order: OrderItem[];
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
 export const ShowIfOrderExists = ({ order, children }: Props) => {
@@ -11,4 +12,3 @@ export const ShowIfOrderExists = ({ order, children }: Props) => {
   }
   return <>{children}</>;
 };
-  
